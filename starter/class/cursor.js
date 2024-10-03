@@ -14,6 +14,10 @@ class Cursor {
     this.setBackgroundColor();
   }
 
+  pos(){
+    return [this.row, this.col];
+  }
+
   resetBackgroundColor() {
     Screen.setBackgroundColor(this.row, this.col, this.gridColor);
   }
@@ -32,7 +36,7 @@ class Cursor {
       this.row -= 1;
       this.setBackgroundColor()
     }
-    this._printCoord()
+    // this._printCoord()
   }
 
   down() {
@@ -41,7 +45,7 @@ class Cursor {
       this.row += 1;
       this.setBackgroundColor()
     }
-    this._printCoord()
+    // this._printCoord()
   }
 
   left() {
@@ -50,7 +54,7 @@ class Cursor {
       this.col -= 1;
       this.setBackgroundColor()
     }
-    this._printCoord()
+    // this._printCoord()
   }
 
   right() {
@@ -59,7 +63,7 @@ class Cursor {
       this.col += 1;
       this.setBackgroundColor()
     }
-    this._printCoord()
+    // this._printCoord()
   }
 
 }

@@ -22,10 +22,17 @@ class TTT {
     Screen.addCommand('s', 'Move Cursor Down', () => this.cursorDown());
     Screen.addCommand('a', 'Move Cursor Left', () => this.cursorLeft());
     Screen.addCommand('d', 'Move Cursor Right', () => this.cursorRight());
+    Screen.addCommand('x', 'Place X', () => this.placeSymbol("X"));
+    Screen.addCommand('o', 'Place O', () => this.placeSymbol("O"));
+    // Screen.addCommand('c', 'FUCK IT', () => Screen.setMessage(TTT.checkWin(this.grid)));
     this.cursor.setBackgroundColor();
     Screen.render();
     Screen.printCommands();
   }
+
+  //Commands 
+
+  /// Directional movement
 
   cursorUp() {
     this.cursor.up();
@@ -53,6 +60,18 @@ class TTT {
     Screen.printCommands();
   }
 
+  ///
+  placeSymbol(symbol){
+    if(TTT.checkWin(this.grid) === false){
+      const currentPos = this.cursor.pos();
+      Screen.setGrid(currentPos[0], currentPos[1], symbol);
+      Screen.render();
+      this.cursor._printCoord();
+      Screen.printCommands();
+    }else{
+      TTT.endGame(TTT.checkWin(this.grid))
+    }
+  }
 
   static checkWin(grid) {
     const OWin = ['O','O','O'];
