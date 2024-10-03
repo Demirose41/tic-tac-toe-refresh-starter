@@ -18,15 +18,41 @@ class TTT {
     Screen.setGridlines(true);
 
     // Replace this with real commands
-    Screen.addCommand('t', 'test command (remove)', TTT.testCommand);
-
+    Screen.addCommand('w', 'Move Cursor Up', () => this.cursorUp());
+    Screen.addCommand('s', 'Move Cursor Down', () => this.cursorDown());
+    Screen.addCommand('a', 'Move Cursor Left', () => this.cursorLeft());
+    Screen.addCommand('d', 'Move Cursor Right', () => this.cursorRight());
+    this.cursor.setBackgroundColor();
     Screen.render();
+    Screen.printCommands();
   }
 
-  // Remove this
-  static testCommand() {
-    console.log("TEST COMMAND");
+  cursorUp() {
+    this.cursor.up();
+    Screen.render();
+    this.cursor._printCoord()
+    Screen.printCommands();
   }
+  cursorDown() {
+    this.cursor.down();
+    Screen.render();
+    this.cursor._printCoord()
+    Screen.printCommands();
+  }
+  cursorLeft() {
+    this.cursor.left();
+    Screen.render();
+    this.cursor._printCoord()
+    Screen.printCommands();
+  }
+
+  cursorRight() {
+    this.cursor.right();
+    Screen.render();
+    this.cursor._printCoord()
+    Screen.printCommands();
+  }
+
 
   static checkWin(grid) {
     const OWin = ['O','O','O'];
