@@ -29,11 +29,60 @@ class TTT {
   }
 
   static checkWin(grid) {
+    const OWin = ['O','O','O'];
+    const XWin = ['X','X','X'];
+    //Horizontal Check
+    if(grid.some((row) => row.every((ele)=> ele == 'X'))){
+      return 'X';
+    }
+    if(grid.some((row) => row.every((ele)=> ele == 'O'))){
+      return 'O';
+    }
+    //Vertical Check
+    let verticalWins = []
+    for(let i = 0; i < grid[0].length; i ++ ){
+      verticalWins.push(grid.map((row) => row[i]))
+    }
+    if(verticalWins.some((row) => row.every((ele) => ele == 'X'))){
+      return 'X';
+    }
+    if(verticalWins.some((row) => row.every((ele) => ele == 'O'))){
+      return 'O';
+    }
+      //Diagonal Check
+    let leftToRightDiagonal = [];
+    let rightToLeftDiagonal = [];
+    let reversedGrid = [...grid].reverse()
+    for(let i = 0; i < grid[0].length; i++){
+      leftToRightDiagonal.push(grid[i][i]);
+    }
+    for(let i = grid[0].length - 1; i >= 0 ; i--){
+      rightToLeftDiagonal.push(reversedGrid[i][i]);
+    }
 
-    // Return 'X' if player X wins
+    if(leftToRightDiagonal.every((ele) => ele == 'X')){
+      return 'X';
+    }
+    if(leftToRightDiagonal.every((ele) => ele == 'O' )){
+      return 'O';
+    }
+    if(rightToLeftDiagonal.every((ele) => ele == 'X')){
+      return 'X';
+    }
+    if(rightToLeftDiagonal.every((ele) => ele == 'O' )){
+      return 'O';
+    }
+    else if (grid.every((row) => row.every((ele) => ele == 'X' || ele == 'O'))){
+      return 'T';
+    }
+    
+    
+    else{ 
+      return false;
+    }
     // Return 'O' if player O wins
     // Return 'T' if the game is a tie
-    // Return false if the game has not ended
+    
 
   }
 

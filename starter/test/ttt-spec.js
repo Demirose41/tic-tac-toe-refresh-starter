@@ -16,7 +16,7 @@ describe ('Tic Tac Toe', function () {
 
   });
 
-  it('recognizes horizontal wins', function () {
+  it('recognizes horizontal wins 1', function () {
 
     grid = [['X','X','X'],
             [' ',' ',' '],
